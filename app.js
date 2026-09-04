@@ -6,7 +6,7 @@
  *    Google Apps Script Anda setelah deploy Code.gs
  */
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyiTGfDhKkjQp-TEGW-kQVjadwIyOVY3loxj6EmMBZW-Fh30shk2mwPmq0uFHcKaXk9/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXoJJDMTtLHCzrP8GGX6GPJEp3b-5nMMbmIAUsLPBQvaACAucx9KU3lXrgAMKDKgnb/exec';
 
 const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/FPAFrWRa0APK4cH0qxcItF';
 const REKENING_NUMBER = '5808919191';
@@ -214,8 +214,7 @@ registrationForm.addEventListener('submit', async function (e) {
     jenisKelamin: getCheckedGender(),
     usia: parseInt(document.getElementById('usia').value.trim(), 10),
     whatsapp: document.getElementById('whatsapp').value.trim().replace(/[\s\-().]/g, ''),
-    domisili: document.getElementById('domisili').value.trim(),
-    persetujuanWA: true,
+    domisili: document.getElementById('domisili').value.trim()
   };
 
   setLoading(true);
@@ -224,7 +223,8 @@ registrationForm.addEventListener('submit', async function (e) {
   // Demo / development mode: jika URL belum diset, simulasikan response sukses
   if (APPS_SCRIPT_URL === 'GANTI_DENGAN_URL_APPS_SCRIPT_ANDA') {
     await simulateDelay(1800);
-    const demoId = 'DRS-' + String(Math.floor(Math.random() * 9000) + 1000);
+    const prefix = payload.jenisKelamin === 'Laki-laki' ? 'DRS-L' : 'DRS-P';
+    const demoId = prefix + '-' + String(Math.floor(Math.random() * 900) + 100);
     setLoading(false);
     showPage2(demoId);
     return;
