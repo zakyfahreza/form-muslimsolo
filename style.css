@@ -4,7 +4,7 @@
    ========================================================== */
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
 
 /* ----------------------------------------------------------
    CSS Variables
@@ -128,27 +128,119 @@ a {
 }
 
 /* ----------------------------------------------------------
-   Hero Section
+   Hero Section — Premium Islamic Design
    ---------------------------------------------------------- */
 .hero {
-  background: linear-gradient(160deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(170deg, #0d2b1e 0%, #122e20 25%, #0a1f15 55%, #0b1a2e 100%);
   color: #fff;
-  padding: var(--space-8) var(--space-5);
+  padding: 0;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
+/* Ambient light glow */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.08) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(212,175,55,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(212,175,55,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(212,175,55,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vignette overlay */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(5,12,8,0.5) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Islamic geometric pattern overlay */
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(212,175,55,1) 30px, rgba(212,175,55,1) 31px),
+    repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(212,175,55,1) 30px, rgba(212,175,55,1) 31px),
+    repeating-linear-gradient(45deg, transparent, transparent 42px, rgba(212,175,55,0.5) 42px, rgba(212,175,55,0.5) 43px),
+    repeating-linear-gradient(-45deg, transparent, transparent 42px, rgba(212,175,55,0.5) 42px, rgba(212,175,55,0.5) 43px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Divine light rays from above */
+.hero-rays {
+  position: absolute;
+  top: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200%;
+  height: 100%;
+  background: conic-gradient(
+    from 260deg at 50% 0%,
+    transparent 0deg,
+    rgba(212,175,55,0.03) 10deg,
+    transparent 20deg,
+    transparent 30deg,
+    rgba(212,175,55,0.04) 40deg,
+    transparent 50deg,
+    transparent 70deg,
+    rgba(212,175,55,0.03) 80deg,
+    transparent 90deg,
+    transparent 110deg,
+    rgba(212,175,55,0.05) 120deg,
+    transparent 130deg,
+    transparent 150deg,
+    rgba(212,175,55,0.03) 155deg,
+    transparent 165deg,
+    transparent 360deg
+  );
+  pointer-events: none;
+  z-index: 1;
+  animation: raysPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes raysPulse {
+  0%   { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Corner ornaments */
+.hero-ornament {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  color: #D4AF37;
+  z-index: 2;
   pointer-events: none;
 }
 
+.hero-ornament--tl { top: 10px; left: 10px; }
+.hero-ornament--tr { top: 10px; right: 10px; }
+.hero-ornament--bl { bottom: 10px; left: 10px; }
+.hero-ornament--br { bottom: 10px; right: 10px; }
+
+.hero-ornament svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero content wrapper */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  padding: var(--space-8) var(--space-5) var(--space-6);
+}
+
+/* Logos */
 .hero-logos {
   display: flex;
   align-items: center;
@@ -158,118 +250,275 @@ a {
 }
 
 .hero-logo {
-  height: 52px;
+  height: 56px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4)) drop-shadow(0 0 20px rgba(212,175,55,0.15));
 }
 
 .hero-logo-divider {
-  width: 1px;
-  height: 40px;
-  background: rgba(255,255,255,0.3);
+  width: 1.5px;
+  height: 44px;
+  background: linear-gradient(180deg, transparent, rgba(212,175,55,0.5), transparent);
 }
 
+/* Premium Badge */
 .hero-label {
-  display: inline-block;
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  color: var(--color-primary);
-  background: #FFFFFF;
-  padding: 6px 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #D4AF37;
+  background: linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.05) 100%);
+  padding: 10px 28px;
   border-radius: var(--radius-full);
   margin-bottom: var(--space-5);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border: 1.5px solid rgba(212,175,55,0.45);
+  box-shadow:
+    0 0 20px rgba(212,175,55,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
+.hero-label strong {
+  color: #D4AF37;
+}
+
+.hero-label-star {
+  font-size: 10px;
+  color: #D4AF37;
+  opacity: 0.7;
+}
+
+/* Geometric Divider */
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin: var(--space-4) auto;
+  max-width: 280px;
+}
+
+.hero-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+}
+
+.hero-divider-diamond {
+  font-size: 8px;
+  color: #D4AF37;
+  opacity: 0.7;
+}
+
+/* Title — Premium serif with gold gradient */
 .hero-title {
-  font-size: clamp(22px, 5vw, 30px);
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: clamp(26px, 6vw, 40px);
   font-weight: 800;
-  line-height: 1.3;
-  margin-bottom: var(--space-4);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  line-height: 1.25;
+  margin-bottom: 0;
+  letter-spacing: 0.01em;
 }
 
 .hero-title em {
-  font-style: normal;
-  color: var(--color-gold);
+  font-style: italic;
+  background: linear-gradient(180deg, #FFE8A0 0%, #D4AF37 40%, #B8932A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 6px rgba(212,175,55,0.35));
 }
 
-.hero-arabic {
-  font-family: var(--font-arabic);
-  font-size: 18px;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: var(--space-5);
-  display: block;
-}
-
+/* Ustadz name — framed card */
 .hero-ustadz {
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.95);
+  margin-top: var(--space-2);
   margin-bottom: var(--space-3);
 }
 
 .hero-ustadz-prefix {
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.5);
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.hero-meta {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+.hero-ustadz-name {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 17px;
+  font-weight: 700;
+  color: #F5E6C4;
+  background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.03) 100%);
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(212,175,55,0.25);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  letter-spacing: 0.01em;
+}
+
+.hero-ustadz-accent {
+  font-size: 10px;
+  color: #D4AF37;
+  opacity: 0.6;
+}
+
+/* Bottom info bar */
+.hero-info-bar {
+  position: relative;
+  z-index: 3;
+  /* Subtle glow effect around the area */
+  box-shadow: 0 -15px 40px rgba(212,175,55,0.05);
+  padding: var(--space-5) var(--space-4);
   margin-top: var(--space-5);
 }
 
-.hero-meta-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
+/* Islamic decorative divider above the info bar */
+.hero-info-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent);
+}
+.hero-info-bar::after {
+  content: '✦';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 14px;
-  color: rgba(255,255,255,0.85);
+  color: #D4AF37;
+  text-shadow: 0 0 10px rgba(212,175,55,0.5);
 }
 
-.hero-meta-item--location {
+.hero-info-bar-inner {
+  display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  align-items: stretch;
+  gap: var(--space-4);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.hero-meta-location-text {
+/* Premium Cards Layout */
+.hero-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  background: linear-gradient(135deg, rgba(13,43,30,0.6) 0%, rgba(10,25,18,0.8) 100%);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.4),
+    inset 0 1px 1px rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: left;
+  flex: 1;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.hero-info-card:hover {
+  border-color: rgba(212,175,55,0.45);
+  transform: translateY(-2px);
+}
+
+/* Gold Icon */
+.hero-info-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
-}
-
-.hero-meta-icon {
-  font-size: 15px;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0.05) 100%);
+  border-radius: var(--radius-md);
+  color: #D4AF37;
   flex-shrink: 0;
-  margin-top: 2px;
-  align-self: flex-start;
+  border: 1px solid rgba(212,175,55,0.2);
+  box-shadow: inset 0 0 10px rgba(212,175,55,0.1);
 }
 
-/* Google Maps link in hero */
-.hero-maps-link {
+.hero-info-card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Card Content */
+.hero-info-card-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  font-size: 12px;
-  color: var(--color-gold);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  margin-top: 3px;
-  transition: opacity var(--transition-fast);
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
 }
 
-.hero-maps-link:hover {
-  opacity: 0.8;
+.hero-info-card-content strong {
+  font-size: 16px;
+  color: #F5E6C4;
+  letter-spacing: 0.01em;
+  margin-bottom: 2px;
+}
+
+.hero-info-card-content span {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+}
+
+.hero-info-time {
+  font-size: 15px !important;
+  font-weight: 700;
+  color: #D4AF37 !important;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Google Maps button */
+.hero-info-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #D4AF37;
+  background: rgba(212,175,55,0.05);
+  border: 1px solid rgba(212,175,55,0.3);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  margin-top: 8px;
+  width: fit-content;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.03em;
+}
+
+.hero-info-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.hero-info-btn:hover {
+  background: rgba(212,175,55,0.15);
+  color: #FFE8A0;
+  border-color: rgba(212,175,55,0.5);
+  transform: translateY(-1px);
+}
+
+/* Vertical separator line between cards on desktop */
+.hero-info-separator {
+  display: none;
 }
 
 /* ----------------------------------------------------------
@@ -1074,12 +1323,44 @@ footer strong {
 
 /* Tablet: 640px+ */
 @media (min-width: 640px) {
-  .hero {
-    padding: var(--space-12) var(--space-8);
+  .hero-content {
+    padding: var(--space-12) var(--space-8) var(--space-8);
   }
 
   .hero-title {
-    font-size: 30px;
+    font-size: 36px;
+  }
+
+  .hero-ornament {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-ornament--tl { top: 16px; left: 16px; }
+  .hero-ornament--tr { top: 16px; right: 16px; }
+  .hero-ornament--bl { bottom: 16px; left: 16px; }
+  .hero-ornament--br { bottom: 16px; right: 16px; }
+
+  .hero-info-bar-inner {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .hero-info-card {
+    flex: 1;
+    max-width: 340px;
+    margin: 0 var(--space-3);
+  }
+
+  .hero-info-separator {
+    display: block;
+    width: 1px;
+    align-self: stretch;
+    background: linear-gradient(180deg, transparent, rgba(212,175,55,0.35), transparent);
+    flex-shrink: 0;
+    margin: var(--space-2) 0;
   }
 
   .container {
@@ -1098,20 +1379,67 @@ footer strong {
 /* Desktop: 1024px+ */
 @media (min-width: 1024px) {
   .hero-title {
-    font-size: 34px;
+    font-size: 42px;
   }
 
-  .hero-meta {
-    flex-direction: row;
-    justify-content: center;
-    gap: var(--space-8);
+  .hero-ustadz-name {
+    font-size: 19px;
+    padding: 14px 36px;
+  }
+
+  .hero-divider {
+    max-width: 340px;
+  }
+
+  .hero-ornament {
+    width: 120px;
+    height: 120px;
+  }
+
+  .hero-info-card {
+    max-width: 380px;
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .hero-info-card-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hero-info-card-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .hero-info-card-content strong {
+    font-size: 17px;
   }
 }
 
 /* Very small screens */
 @media (max-width: 380px) {
-  .hero {
-    padding: var(--space-6) var(--space-4);
+  .hero-content {
+    padding: var(--space-6) var(--space-4) var(--space-5);
+  }
+
+  .hero-ornament {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hero-ornament--tl { top: 6px; left: 6px; }
+  .hero-ornament--tr { top: 6px; right: 6px; }
+  .hero-ornament--bl { bottom: 6px; left: 6px; }
+  .hero-ornament--br { bottom: 6px; right: 6px; }
+
+  .hero-label {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+
+  .hero-ustadz-name {
+    font-size: 15px;
+    padding: 10px 18px;
   }
 
   form {

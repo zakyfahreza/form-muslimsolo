@@ -143,12 +143,7 @@ function validateForm() {
     isValid = false;
   }
 
-  // Checkbox persetujuan
-  const persetujuan = document.getElementById('persetujuan').checked;
-  if (!persetujuan) {
-    setError('group-persetujuan', 'error-persetujuan', 'Silakan menyetujui penerimaan informasi melalui WhatsApp.');
-    isValid = false;
-  }
+
 
   // Scroll to first error
   if (!isValid) {
@@ -220,7 +215,7 @@ registrationForm.addEventListener('submit', async function (e) {
     usia: parseInt(document.getElementById('usia').value.trim(), 10),
     whatsapp: document.getElementById('whatsapp').value.trim().replace(/[\s\-().]/g, ''),
     domisili: document.getElementById('domisili').value.trim(),
-    persetujuanWA: document.getElementById('persetujuan').checked,
+    persetujuanWA: true,
   };
 
   setLoading(true);
@@ -322,10 +317,7 @@ document.querySelectorAll('input[name="jenisKelamin"]').forEach(radio => {
   radio.addEventListener('change', () => clearError('group-gender', 'error-gender'));
 });
 
-/* Checkbox change */
-document.getElementById('persetujuan').addEventListener('change', function () {
-  if (this.checked) clearError('group-persetujuan', 'error-persetujuan');
-});
+
 
 /* ==========================================================
    Copy Rekening
