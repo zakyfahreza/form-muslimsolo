@@ -59,7 +59,7 @@ const MSG = {
   fileType: "Format file harus JPG, PNG, WEBP, atau PDF.",
   fileUnreadable: "File tidak dapat diproses. Silakan pilih file lain.",
   commitment: "Centang pernyataan komitmen untuk melanjutkan.",
-  duplicate: "Nomor WhatsApp ini sudah terdaftar.",
+  duplicate: "Peserta dengan nama dan nomor WhatsApp ini sudah terdaftar.",
   duplicateHint: "Jika Anda baru saja mendaftar, hubungi admin untuk menanyakan No. Registrasi Anda.",
   network: "Koneksi bermasalah. Data Anda masih tersimpan di form, silakan coba lagi.",
   server: "Terjadi kendala di server. Silakan coba beberapa saat lagi atau hubungi admin.",
@@ -696,8 +696,9 @@ function handleServerError(res) {
   const message = res.message || MSG.server;
 
   if (field) {
-    setError(field, code === "DUPLICATE_PHONE" ? MSG.duplicate : message);
-    showAlert(code === "DUPLICATE_PHONE" ? `${MSG.duplicate} ${MSG.duplicateHint}` : MSG.checkFields);
+    const isDuplicate = code === "DUPLICATE_ENTRY" || code === "DUPLICATE_PHONE";
+    setError(field, isDuplicate ? MSG.duplicate : message);
+    showAlert(isDuplicate ? `${MSG.duplicate} ${MSG.duplicateHint}` : MSG.checkFields);
     focusField(field);
     return;
   }

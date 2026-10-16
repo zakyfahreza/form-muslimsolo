@@ -59,7 +59,8 @@ lalu buka alamat yang ditampilkan.
   - QRIS → `Menunggu Verifikasi` (buka `Link Bukti Bayar`, cocokkan dengan mutasi, lalu ubah ke `Lunas` atau `Ditolak`).
   - Tunai → `Belum Bayar (Bayar di Lokasi)` (ubah ke `Lunas` saat membayar di lokasi).
 - `Catatan Admin` bebas diisi.
-- Peserta laki-laki masuk tab `Putra`, perempuan masuk tab `Putri`. No. Registrasi, cek nomor WA ganda, dan kuota dihitung gabungan kedua tab.
+- Peserta laki-laki masuk tab `Putra`, perempuan masuk tab `Putri`. No. Registrasi, cek pendaftaran ganda, dan kuota dihitung gabungan kedua tab.
+- Satu nomor WhatsApp boleh dipakai beberapa peserta (mis. keluarga). Yang ditolak hanya bila nama **dan** nomor WA sama persis dengan pendaftar sebelumnya.
 - Jangan mengubah urutan kolom atau nama tab `Putra` / `Putri`.
 - Link bukti bayar hanya bisa dibuka akun pemilik / yang diberi akses ke folder.
 
