@@ -863,6 +863,31 @@ a { color: var(--green-900); }
   gap: var(--space-2);
 }
 
+.success__note { text-align: left; }
+
+.success__save-status {
+  color: var(--green-900);
+  font-size: 13px;
+  font-weight: 600;
+}
+.success__save-status:empty { display: none; }
+
+.success__preview {
+  margin: var(--space-2) 0 0;
+}
+.success__preview img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-input);
+  box-shadow: var(--shadow-card);
+}
+.success__preview figcaption {
+  margin-top: var(--space-2);
+  color: var(--text-600);
+  font-size: 13px;
+}
+
 .quota__text { margin-bottom: var(--space-5); color: var(--text-600); }
 
 /* ==========================================================================

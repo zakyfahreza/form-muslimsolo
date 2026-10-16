@@ -88,6 +88,8 @@ const state = {
 
 let proofToken = 0;     // membatalkan hasil kompresi yang sudah usang
 let lastRegNo = "";
+let lastRegistration = null;   // data panel sukses untuk gambar bukti registrasi
+let savedProofUrl = null;      // object URL gambar bukti registrasi terakhir
 
 /* --------------------------------------------------------------------------
    Utilitas
@@ -730,11 +732,19 @@ function showSuccess(data, payload) {
   badge.classList.remove("status-badge--waiting", "status-badge--cash");
   badge.classList.add(method === "QRIS" ? "status-badge--waiting" : "status-badge--cash");
 
-  $("#wa-btn").href = waLink(
-    `Assalamu'alaikum admin, saya sudah mendaftar daurah ${CONFIG.EVENT.TITLE}.\n` +
-    `No. Registrasi: ${regNo}\n` +
-    `Nama: ${name}`
-  );
+  // Data untuk gambar bukti registrasi
+  lastRegistration = {
+    regNo,
+    name,
+    gender: payload.gender,
+    age: `${payload.age} tahun`,
+    whatsapp: "0" + payload.whatsapp.slice(2),
+    city: payload.city,
+    method,
+    status,
+    registeredAt: new Date()
+  };
+  resetSavedProof();
 
   // Bebaskan memori bukti bayar
   clearProof();
@@ -776,7 +786,309 @@ async function copyRegNo() {
   setTimeout(() => { btn.textContent = "Salin"; }, 2000);
 }
 
+/* --------------------------------------------------------------------------
+   Bukti registrasi (gambar PNG digambar di canvas, tanpa pustaka tambahan)
+   -------------------------------------------------------------------------- */
+const PROOF_NOTE = "Harap simpan bukti registrasi ini untuk ditunjukkan kepada bagian registrasi peserta di lokasi daurah.";
+const FONT_SANS = '"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif';
+const FONT_DISPLAY = '"Playfair Display", Georgia, serif';
+
+function resetSavedProof() {
+  if (savedProofUrl) URL.revokeObjectURL(savedProofUrl);
+  savedProofUrl = null;
+  $("#save-proof-img").removeAttribute("src");
+  $("#save-proof-preview").hidden = true;
+  $("#save-proof-status").textContent = "";
+  $("#save-proof-label").textContent = "Simpan Bukti Registrasi";
+  $("#save-proof-btn").disabled = false;
+}
+
+function roundRectPath(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+/** Pecah teks menjadi baris yang muat di maxWidth (kata sangat panjang dipotong per huruf). */
+function wrapText(ctx, text, maxWidth) {
+  const lines = [];
+  let line = "";
+  String(text).split(/\s+/).filter(Boolean).forEach((word) => {
+    const test = line ? `${line} ${word}` : word;
+    if (ctx.measureText(test).width <= maxWidth) {
+      line = test;
+      return;
+    }
+    if (line) lines.push(line);
+    line = "";
+    // Kata lebih lebar dari baris → potong per karakter
+    let chunk = "";
+    Array.from(word).forEach((ch) => {
+      if (ctx.measureText(chunk + ch).width > maxWidth && chunk) {
+        lines.push(chunk);
+        chunk = ch;
+      } else {
+        chunk += ch;
+      }
+    });
+    line = chunk;
+  });
+  if (line) lines.push(line);
+  return lines.length ? lines : [""];
+}
+
+function loadLogo() {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = "assets/icon.png";
+  });
+}
+
+function formatRegisteredAt(date) {
+  const fmt = new Intl.DateTimeFormat("id-ID", {
+    day: "2-digit", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Jakarta"
+  });
+  return `${fmt.format(date).replace(/\./g, ":")} WIB`;
+}
+
+/** Gambar bukti registrasi ke canvas; tinggi menyesuaikan isi. */
+function drawRegistrationProof(reg, logo) {
+  const W = 1080;
+  const P = 72;
+  const ev = CONFIG.EVENT;
+  const hasDate = Boolean(ev.DATE_LABEL && ev.DATE_LABEL.trim());
+
+  const canvas = document.createElement("canvas");
+  canvas.width = W;
+  canvas.height = 2600;   // dipotong di akhir sesuai tinggi isi
+  const ctx = canvas.getContext("2d");
+  ctx.textBaseline = "alphabetic";
+
+  ctx.fillStyle = "#FFFFFF";
+  ctx.fillRect(0, 0, W, canvas.height);
+
+  // Header marun
+  const headerH = 400;
+  const grad = ctx.createLinearGradient(0, 0, W, headerH);
+  grad.addColorStop(0, "#8E1F26");
+  grad.addColorStop(1, "#6E161C");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, headerH);
+
+  // Logo (chip putih)
+  const chip = 120;
+  const chipX = (W - chip) / 2;
+  const chipY = 48;
+  ctx.fillStyle = "#FFFFFF";
+  roundRectPath(ctx, chipX, chipY, chip, chip, 28);
+  ctx.fill();
+  if (logo) {
+    ctx.save();
+    roundRectPath(ctx, chipX, chipY, chip, chip, 28);
+    ctx.clip();
+    const s = chip * 1.3;
+    ctx.drawImage(logo, chipX - (s - chip) / 2, chipY - (s - chip) / 2, s, s);
+    ctx.restore();
+  }
+
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#FBF4EC";
+  ctx.font = `600 30px ${FONT_SANS}`;
+  ctx.fillText(ev.SERIES, W / 2, 222);
+  ctx.font = `italic 700 92px ${FONT_DISPLAY}`;
+  ctx.fillText(`${ev.TITLE}.`, W / 2, 322);
+  ctx.font = `600 28px ${FONT_SANS}`;
+  ctx.fillText(`bersama ${ev.SPEAKER}`, W / 2, 370);
+
+  let y = headerH + 72;
+
+  // Judul dokumen
+  ctx.fillStyle = "#0A3D2E";
+  ctx.font = `800 34px ${FONT_SANS}`;
+  ctx.fillText("BUKTI REGISTRASI PESERTA", W / 2, y);
+  y += 40;
+
+  // Kotak No. Registrasi
+  const boxH = 200;
+  ctx.fillStyle = "#0A3D2E";
+  roundRectPath(ctx, P, y, W - P * 2, boxH, 28);
+  ctx.fill();
+  ctx.fillStyle = "rgba(255,255,255,.85)";
+  ctx.font = `600 28px ${FONT_SANS}`;
+  ctx.fillText("No. Registrasi", W / 2, y + 62);
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = `800 96px ${FONT_SANS}`;
+  ctx.fillText(reg.regNo, W / 2, y + 162);
+  y += boxH + 48;
+
+  // Data peserta
+  ctx.textAlign = "left";
+  const labelX = P;
+  const valueX = P + 310;
+  const valueW = W - P - valueX;
+  const rows = [
+    ["Nama", reg.name],
+    ["Jenis Kelamin", reg.gender],
+    ["Usia", reg.age],
+    ["No. WhatsApp", reg.whatsapp],
+    ["Domisili", reg.city],
+    ["Metode Bayar", reg.method],
+    ["Status Pembayaran", reg.status]
+  ];
+  rows.forEach(([label, value], i) => {
+    ctx.font = `600 32px ${FONT_SANS}`;
+    const lines = wrapText(ctx, value, valueW);
+    const lineH = 44;
+    const rowTop = y;
+    const firstBase = rowTop + 46;
+
+    ctx.fillStyle = "#5B6660";
+    ctx.font = `500 28px ${FONT_SANS}`;
+    ctx.fillText(label, labelX, firstBase);
+
+    ctx.fillStyle = label === "Status Pembayaran"
+      ? (reg.method === "QRIS" ? "#7A5200" : "#3C4340")
+      : "#14201B";
+    ctx.font = `${label === "Nama" ? 800 : 600} 32px ${FONT_SANS}`;
+    lines.forEach((ln, j) => ctx.fillText(ln, valueX, firstBase + j * lineH));
+
+    y = firstBase + (lines.length - 1) * lineH + 26;
+    if (i < rows.length - 1) {
+      ctx.fillStyle = "#E5E5E3";
+      ctx.fillRect(P, y, W - P * 2, 2);
+    }
+  });
+  y += 40;
+
+  // Jadwal daurah
+  ctx.font = `500 28px ${FONT_SANS}`;
+  const venueLines = wrapText(ctx, `${ev.VENUE}, ${ev.ADDRESS}`, W - P * 2 - 80 - 150);
+  const dateText = hasDate ? `${ev.DATE_LABEL}${ev.HIJRI_LABEL ? ` / ${ev.HIJRI_LABEL}` : ""}` : "Segera diumumkan";
+  ctx.font = `500 28px ${FONT_SANS}`;
+  const dateLines = wrapText(ctx, dateText, W - P * 2 - 80 - 150);
+  const schedule = [["Tanggal", dateLines], ["Waktu", [ev.TIME_LABEL]], ["Lokasi", venueLines], ["Bawa", [ev.BRING]]];
+  const schedLines = schedule.reduce((n, [, l]) => n + l.length, 0);
+  const schedH = 96 + schedLines * 40 + (schedule.length - 1) * 12 + 24;
+
+  ctx.fillStyle = "#E8F3EE";
+  roundRectPath(ctx, P, y, W - P * 2, schedH, 24);
+  ctx.fill();
+  ctx.fillStyle = "#0A3D2E";
+  ctx.fillRect(P, y + 20, 8, schedH - 40);
+  ctx.font = `800 30px ${FONT_SANS}`;
+  ctx.fillText("Jadwal Daurah", P + 40, y + 60);
+  let sy = y + 108;
+  schedule.forEach(([label, lines]) => {
+    ctx.fillStyle = "#0A3D2E";
+    ctx.font = `700 28px ${FONT_SANS}`;
+    ctx.fillText(label, P + 40, sy);
+    ctx.fillStyle = "#14201B";
+    ctx.font = `500 28px ${FONT_SANS}`;
+    lines.forEach((ln, j) => ctx.fillText(ln, P + 40 + 150, sy + j * 40));
+    sy += lines.length * 40 + 12;
+  });
+  y += schedH + 32;
+
+  // Catatan
+  ctx.font = `700 30px ${FONT_SANS}`;
+  const noteLines = wrapText(ctx, PROOF_NOTE, W - P * 2 - 80);
+  const noteH = 56 + noteLines.length * 42;
+  ctx.fillStyle = "#FFF7E0";
+  roundRectPath(ctx, P, y, W - P * 2, noteH, 24);
+  ctx.fill();
+  ctx.fillStyle = "#F2B705";
+  ctx.fillRect(P, y + 16, 8, noteH - 32);
+  ctx.fillStyle = "#7A5200";
+  noteLines.forEach((ln, j) => ctx.fillText(ln, P + 40, y + 62 + j * 42));
+  y += noteH + 48;
+
+  // Kaki
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#5B6660";
+  ctx.font = `500 24px ${FONT_SANS}`;
+  ctx.fillText(`Terdaftar: ${formatRegisteredAt(reg.registeredAt)}`, W / 2, y);
+  ctx.fillText("muslimsolo.id", W / 2, y + 36);
+  y += 72;
+
+  // Potong sesuai tinggi isi
+  const out = document.createElement("canvas");
+  out.width = W;
+  out.height = Math.ceil(y);
+  out.getContext("2d").drawImage(canvas, 0, 0);
+  canvas.width = 0;
+  canvas.height = 0;
+  return out;
+}
+
+function canvasToPng(canvas) {
+  return new Promise((resolve, reject) => {
+    try {
+      canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("toBlob gagal"))), "image/png");
+    } catch (err) {
+      reject(err);   // SecurityError bila canvas "tainted" (mis. dibuka via file://)
+    }
+  });
+}
+
+async function saveRegistrationProof() {
+  if (!lastRegistration) return;
+  const btn = $("#save-proof-btn");
+  const status = $("#save-proof-status");
+  btn.disabled = true;
+  $("#save-proof-label").textContent = "Menyiapkan gambar…";
+  status.textContent = "";
+
+  try {
+    // Pastikan font sudah siap agar teks di gambar sesuai tampilan
+    if (document.fonts) {
+      await Promise.all([
+        document.fonts.load(`800 32px ${FONT_SANS}`),
+        document.fonts.load(`italic 700 92px ${FONT_DISPLAY}`)
+      ]).catch(() => {});
+    }
+    const logo = await loadLogo();
+    let blob;
+    try {
+      blob = await canvasToPng(drawRegistrationProof(lastRegistration, logo));
+    } catch {
+      blob = await canvasToPng(drawRegistrationProof(lastRegistration, null));
+    }
+
+    if (savedProofUrl) URL.revokeObjectURL(savedProofUrl);
+    savedProofUrl = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = savedProofUrl;
+    a.download = `Bukti-Registrasi-${lastRegistration.regNo || "Daurah"}.png`;
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    // Pratinjau: cadangan bila browser HP tidak mengunduh otomatis
+    const img = $("#save-proof-img");
+    img.src = savedProofUrl;
+    img.alt = `Bukti registrasi ${lastRegistration.regNo} atas nama ${lastRegistration.name}`;
+    $("#save-proof-preview").hidden = false;
+    status.textContent = "Bukti registrasi sudah diunduh. Cek folder Download atau Galeri Anda.";
+  } catch (err) {
+    console.error("Gagal membuat bukti registrasi:", err);
+    status.textContent = "Gagal membuat gambar. Silakan ambil screenshot halaman ini sebagai bukti registrasi.";
+  } finally {
+    btn.disabled = false;
+    $("#save-proof-label").textContent = "Simpan Bukti Registrasi";
+  }
+}
+
 function resetForm() {
+  resetSavedProof();
+  lastRegistration = null;
   $("#reg-form").reset();
   state.values = { name: "", gender: "", age: "", whatsapp: "", city: "", paymentMethod: "", commitment: false };
   clearProof();
@@ -873,6 +1185,7 @@ function bindEvents() {
 
   $("#copy-btn").addEventListener("click", copyRegNo);
   $("#again-btn").addEventListener("click", resetForm);
+  $("#save-proof-btn").addEventListener("click", saveRegistrationProof);
 }
 
 /* --------------------------------------------------------------------------
