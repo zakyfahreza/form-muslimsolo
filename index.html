@@ -1,537 +1,341 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Daftar sekarang untuk Daurah 'Poligami: Bukti Keadilan Hukum Allah' bersama Ustadz Abdullah Taslim, M.A. — Sabtu, 12 September 2026 di Masjid Ar Rahman, Surakarta. Gratis dan terbuka untuk umum.">
-  <meta name="theme-color" content="#123B2A">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Pendaftaran Daurah — Masjid Ar Rahman Surakarta">
-  <meta property="og:description"
-    content="Daftar Daurah 'Poligami: Bukti Keadilan Hukum Allah' bersama Ustadz Abdullah Taslim, M.A. — 12 September 2026, Gratis!">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://daftar.muslimsolo.id">
-
-  <title>Pendaftaran Daurah — Masjid Ar Rahman Surakarta</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/logo-ms.png">
-
-  <!-- Google Fonts -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pendaftaran Daurah Tajidul Iman | Muslim Solo</title>
+  <meta name="description" content="Formulir pendaftaran Daurah Safr Ilmu (Ikhwan &amp; Akhwat) Tajidul Iman bersama Ustadz Afifi Abdul Wadud, B.A di Masjid Ar Rahman, Surakarta.">
+  <meta name="theme-color" content="#8E1F26">
+  <link rel="icon" href="assets/icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
-
 <body>
+  <a class="skip-link" href="#form-card">Langsung ke formulir</a>
 
-  <!-- ======================================================
-       PAGE 1 — PENDAFTARAN
-       ====================================================== -->
-  <div id="page-1" class="page">
+  <!-- Ikon SVG (satu gaya garis, dipakai ulang lewat <use>) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+      <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M5 12v8.5h14V12M12 8v12.5M12 8S10.5 3.5 8 4.2C5.8 4.8 7 8 12 8zM12 8s1.5-4.5 4-3.8C18.2 4.8 17 8 12 8z"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></symbol>
+      <symbol id="i-qr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></symbol>
+      <symbol id="i-cash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.8"/><path d="M6 9.5v.01M18 14.5v.01"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M7.5 8.5 12 4l4.5 4.5"/><path d="M4 15v3.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V15"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17.5 19 7"/></symbol>
+      <symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 2.4 17.6A2 2 0 0 0 4.1 20.6h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4.5M12 17v.01"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.5v.01"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H6.5A2 2 0 0 0 4.5 4.5v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5M8 14h8M8 17.5h5"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5"/><path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17"/></symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.2-1.6-2-1-1 .9c-1.2-.5-2.2-1.5-2.7-2.7l.9-1-1-2z"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18.5 14.2A6.5 6.5 0 0 1 21.5 20"/></symbol>
+    </defs>
+  </svg>
 
-    <!-- Hero -->
-    <header class="hero" role="banner">
-      <!-- Decorative light rays -->
-      <div class="hero-rays" aria-hidden="true"></div>
-
-      <!-- Corner ornaments -->
-      <div class="hero-ornament hero-ornament--tl" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0h120v6H6v114H0V0z" fill="currentColor" opacity="0.5" />
-          <path d="M0 0h60v2H2v58H0V0z" fill="currentColor" />
-          <circle cx="16" cy="16" r="4" fill="currentColor" opacity="0.6" />
-          <path d="M30 2v18h-2V4H10V2h20z" fill="currentColor" opacity="0.4" />
-        </svg>
-      </div>
-      <div class="hero-ornament hero-ornament--tr" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M120 0H0v6h114v114h6V0z" fill="currentColor" opacity="0.5" />
-          <path d="M120 0H60v2h58v58h2V0z" fill="currentColor" />
-          <circle cx="104" cy="16" r="4" fill="currentColor" opacity="0.6" />
-          <path d="M90 2v18h2V4h18V2H90z" fill="currentColor" opacity="0.4" />
-        </svg>
-      </div>
-      <div class="hero-ornament hero-ornament--bl" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 120h120v-6H6V0H0v120z" fill="currentColor" opacity="0.5" />
-          <path d="M0 120h60v-2H2V60H0v60z" fill="currentColor" />
-          <circle cx="16" cy="104" r="4" fill="currentColor" opacity="0.6" />
-        </svg>
-      </div>
-      <div class="hero-ornament hero-ornament--br" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M120 120H0v-6h114V0h6v120z" fill="currentColor" opacity="0.5" />
-          <path d="M120 120H60v-2h58V60h2v60z" fill="currentColor" />
-          <circle cx="104" cy="104" r="4" fill="currentColor" opacity="0.6" />
-        </svg>
+  <!-- ================= HERO (diisi dari CONFIG di app.js) ================= -->
+  <header class="hero">
+    <div class="hero__inner">
+      <div class="hero__top">
+        <span class="hero__logo-chip"><img class="hero__logo" src="assets/icon.png" alt="Muslim Solo" width="56" height="56"></span>
+        <span class="hero__series" data-bind="series"></span>
       </div>
 
-      <!-- Islamic geometric pattern overlay -->
-      <div class="hero-pattern" aria-hidden="true"></div>
+      <h1 class="hero__title" data-bind="title"></h1>
 
-      <!-- Content -->
-      <div class="hero-content">
-        <div class="hero-logos" aria-hidden="true">
-          <img src="img/logo-ms.png" alt="Muslim Solo" class="hero-logo">
-          <div class="hero-logo-divider"></div>
-          <img src="img/logo-arrahman.png" alt="Masjid Ar Rahman" class="hero-logo">
+      <p class="hero__badge" data-bind="badge"></p>
+
+      <p class="hero__speaker-intro">In sya Allah bersama Ustadz</p>
+      <p class="hero__speaker" data-bind="speakerName"></p>
+
+      <ul class="hero__info">
+        <li class="info-item">
+          <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
+          <span>
+            <span class="info-item__label">Tanggal</span>
+            <span class="info-item__value" data-bind="date"></span>
+            <span class="info-item__sub" data-bind="hijri"></span>
+          </span>
+        </li>
+        <li class="info-item">
+          <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>
+          <span>
+            <span class="info-item__label">Waktu</span>
+            <span class="info-item__value" data-bind="time"></span>
+          </span>
+        </li>
+        <li class="info-item">
+          <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+          <span>
+            <span class="info-item__label">Lokasi</span>
+            <span class="info-item__value" data-bind="venue"></span>
+            <span class="info-item__sub" data-bind="address"></span>
+            <a class="info-item__link" id="maps-link" target="_blank" rel="noopener">Lihat di Google Maps<span class="visually-hidden"> (membuka tab baru)</span> ↗</a>
+          </span>
+        </li>
+        <li class="info-item">
+          <svg class="icon" aria-hidden="true"><use href="#i-gift"/></svg>
+          <span>
+            <span class="info-item__label">Benefit</span>
+            <span class="info-item__value" data-bind="benefits"></span>
+          </span>
+        </li>
+      </ul>
+
+      <p class="hero__bring" data-bind="bringLine"></p>
+    </div>
+  </header>
+
+  <!-- ================= FORM ================= -->
+  <main id="main" class="main">
+    <div class="card" id="form-card" tabindex="-1">
+      <noscript>
+        <p class="noscript">Formulir ini membutuhkan JavaScript. Aktifkan JavaScript di browser Anda atau hubungi admin via WhatsApp 0819-3525-2800.</p>
+      </noscript>
+
+      <!-- ---------- Tampilan form ---------- -->
+      <section id="form-view" aria-label="Formulir pendaftaran">
+        <p class="greeting">Assalamu'alaikum warahmatullahi wabarakatuh. Silakan lengkapi data berikut.</p>
+
+        <div id="form-alert" class="alert alert--error" role="alert" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#i-warn"/></svg>
+          <p id="form-alert-text"></p>
         </div>
 
-        <!-- Premium badge -->
-        <div class="hero-label" aria-label="Jenis kegiatan: Safr Ilmu">
-          <span class="hero-label-star" aria-hidden="true">✦</span>
-          <strong>Safr Ilmu</strong>
-          <span class="hero-label-star" aria-hidden="true">✦</span>
-        </div>
+        <form id="reg-form" novalidate>
+          <!-- Section A -->
+          <section class="section" aria-labelledby="sec-a-title">
+            <h2 class="section-title" id="sec-a-title">Data Peserta</h2>
 
-        <!-- Geometric divider -->
-        <div class="hero-divider" aria-hidden="true">
-          <span class="hero-divider-line"></span>
-          <span class="hero-divider-diamond">◆</span>
-          <span class="hero-divider-line"></span>
-        </div>
+            <div class="field" id="field-name">
+              <label class="label" for="name">Nama Lengkap <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda" autocomplete="name" maxlength="100" required aria-required="true" aria-describedby="err-name">
+              <p class="field-error" id="err-name"></p>
+            </div>
 
-        <h1 class="hero-title">
-          <em>"Poligami: Bukti Keadilan</em><br>
-          <em>Hukum Allah"</em>
-        </h1>
+            <fieldset class="field" id="field-gender" aria-describedby="err-gender">
+              <legend class="label">Jenis Kelamin <span class="req" aria-hidden="true">*</span></legend>
+              <div class="choices choices--2">
+                <label class="choice">
+                  <input class="choice__input" type="radio" name="gender" value="Laki-laki" required aria-describedby="err-gender">
+                  <span class="choice__box"><span class="choice__dot" aria-hidden="true"></span><span class="choice__text nowrap">Laki-laki</span></span>
+                </label>
+                <label class="choice">
+                  <input class="choice__input" type="radio" name="gender" value="Perempuan" aria-describedby="err-gender">
+                  <span class="choice__box"><span class="choice__dot" aria-hidden="true"></span><span class="choice__text">Perempuan</span></span>
+                </label>
+              </div>
+              <p class="field-error" id="err-gender"></p>
+            </fieldset>
 
-        <!-- Geometric divider -->
-        <div class="hero-divider" aria-hidden="true">
-          <span class="hero-divider-line"></span>
-          <span class="hero-divider-diamond">◆</span>
-          <span class="hero-divider-line"></span>
-        </div>
+            <div class="field" id="field-age">
+              <label class="label" for="age">Usia <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" type="number" id="age" name="age" placeholder="Masukkan usia Anda" inputmode="numeric" min="5" max="100" step="1" required aria-required="true" aria-describedby="err-age">
+              <p class="field-error" id="err-age"></p>
+            </div>
 
-        <!-- Ustadz name frame -->
-        <div class="hero-ustadz">
-          <span class="hero-ustadz-prefix">Bersama</span>
-          <div class="hero-ustadz-name">
-            <span class="hero-ustadz-accent" aria-hidden="true">✦</span>
-            Ustadz Abdullah Taslim, M.A.
-            <span class="hero-ustadz-accent" aria-hidden="true">✦</span>
+            <div class="field" id="field-whatsapp">
+              <label class="label" for="whatsapp">Nomor WhatsApp <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" type="tel" id="whatsapp" name="whatsapp" placeholder="Contoh: 08123456789" inputmode="tel" autocomplete="tel" maxlength="20" required aria-required="true" aria-describedby="hint-whatsapp err-whatsapp">
+              <p class="hint" id="hint-whatsapp">Pastikan nomor aktif di WhatsApp.</p>
+              <p class="field-error" id="err-whatsapp"></p>
+            </div>
+
+            <div class="field" id="field-city">
+              <label class="label" for="city">Domisili <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" type="text" id="city" name="city" placeholder="Kota/Kabupaten tempat tinggal" autocomplete="address-level2" maxlength="100" required aria-required="true" aria-describedby="err-city">
+              <p class="field-error" id="err-city"></p>
+            </div>
+          </section>
+
+          <!-- Section B -->
+          <section class="section" aria-labelledby="sec-b-title">
+            <h2 class="section-title" id="sec-b-title">Metode Pembayaran</h2>
+
+            <fieldset class="field" id="field-paymentMethod" aria-describedby="err-paymentMethod">
+              <legend class="label">Pilih metode pembayaran <span class="req" aria-hidden="true">*</span></legend>
+              <div class="choices">
+                <label class="choice choice--pay">
+                  <input class="choice__input" type="radio" name="paymentMethod" value="QRIS" required aria-describedby="err-paymentMethod">
+                  <span class="choice__box">
+                    <span class="choice__icon" aria-hidden="true"><svg class="icon"><use href="#i-qr"/></svg></span>
+                    <span class="choice__body">
+                      <span class="choice__title">QRIS</span>
+                      <span class="choice__sub">Bayar sekarang, unggah bukti</span>
+                    </span>
+                    <span class="choice__dot" aria-hidden="true"></span>
+                  </span>
+                </label>
+                <label class="choice choice--pay">
+                  <input class="choice__input" type="radio" name="paymentMethod" value="Tunai" aria-describedby="err-paymentMethod">
+                  <span class="choice__box">
+                    <span class="choice__icon" aria-hidden="true"><svg class="icon"><use href="#i-cash"/></svg></span>
+                    <span class="choice__body">
+                      <span class="choice__title">Tunai</span>
+                      <span class="choice__sub">Bayar di lokasi saat acara</span>
+                    </span>
+                    <span class="choice__dot" aria-hidden="true"></span>
+                  </span>
+                </label>
+              </div>
+              <p class="field-error" id="err-paymentMethod"></p>
+            </fieldset>
+
+            <!-- Blok QRIS -->
+            <div id="qris-block" class="reveal" hidden>
+              <div class="notice notice--warn">
+                <svg class="icon" aria-hidden="true"><use href="#i-warn"/></svg>
+                <p><strong>Lakukan pembayaran terlebih dahulu</strong>, kemudian <strong>WAJIB mengunggah bukti pembayaran</strong> di bawah ini sebelum menekan tombol Daftar.</p>
+              </div>
+
+              <div class="qris-card">
+                <img class="qris-card__img" id="qris-img" alt="" width="576" height="536">
+                <p class="qris-card__missing" id="qris-missing" hidden>Gambar QRIS belum tersedia. Silakan hubungi admin atau pilih metode Tunai.</p>
+                <p class="qris-card__total">Total: <strong data-bind="fee"></strong></p>
+                <a class="btn btn--secondary btn--sm" id="qris-download" download="QRIS-Muslim-Solo-Daurah-Tajidul-Iman.jpeg">
+                  <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+                  Unduh QRIS
+                </a>
+                <p class="qris-card__status" id="qris-download-status" role="status"></p>
+              </div>
+
+              <div class="field" id="field-proof">
+                <span class="label" id="proof-label">Bukti Pembayaran <span class="req" aria-hidden="true">*</span></span>
+                <input class="upload__input visually-hidden" type="file" id="proof" name="proof" accept="image/jpeg,image/png,image/webp,application/pdf" aria-labelledby="proof-label proof-title" aria-describedby="proof-hint err-proof">
+                <label class="upload__zone" for="proof" id="upload-zone">
+                  <svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>
+                  <span class="upload__title" id="proof-title">Ketuk untuk memilih foto/screenshot bukti pembayaran</span>
+                  <span class="upload__hint" id="proof-hint">JPG, PNG, WEBP, atau PDF • maks 5 MB</span>
+                </label>
+
+                <p class="upload__processing" id="proof-processing" role="status" hidden>
+                  <span class="spinner spinner--dark" aria-hidden="true"></span>
+                  Memproses gambar…
+                </p>
+
+                <div class="upload__preview" id="proof-preview" hidden>
+                  <img class="upload__thumb" id="proof-thumb" alt="Pratinjau bukti pembayaran" hidden>
+                  <span class="upload__pdf" id="proof-pdf" hidden><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><span class="visually-hidden">Dokumen PDF</span></span>
+                  <div class="upload__meta">
+                    <p class="upload__name" id="proof-name"></p>
+                    <p class="upload__size" id="proof-size"></p>
+                  </div>
+                  <div class="upload__actions">
+                    <button type="button" class="btn btn--ghost" id="proof-change">Ganti</button>
+                    <button type="button" class="btn btn--ghost btn--danger" id="proof-remove">Hapus</button>
+                  </div>
+                </div>
+
+                <p class="field-error" id="err-proof"></p>
+              </div>
+            </div>
+
+            <!-- Blok Tunai -->
+            <div id="cash-block" class="reveal" hidden>
+              <div class="notice notice--green">
+                <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+                <p>Pendaftaran tunai tetap berarti Anda berkomitmen serius untuk hadir. Kuota, konsumsi (snack &amp; makan siang), dan kitab disiapkan sesuai jumlah pendaftar. Jika berhalangan hadir, mohon konfirmasi ke admin agar kuota bisa digunakan peserta lain.</p>
+              </div>
+
+              <div class="field" id="field-commitment">
+                <label class="check" for="commitment">
+                  <input type="checkbox" id="commitment" name="commitment" aria-describedby="err-commitment">
+                  <span>Saya berkomitmen mengikuti daurah ini dengan sungguh-sungguh dan akan membayar kontribusi <span data-bind="fee"></span> di lokasi.</span>
+                </label>
+                <p class="field-error" id="err-commitment"></p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Honeypot anti-bot: jangan diisi -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
           </div>
+
+          <button type="submit" class="btn btn--primary" id="submit-btn">
+            <span class="spinner" id="submit-spinner" aria-hidden="true" hidden></span>
+            <span id="submit-label">Daftar</span>
+          </button>
+          <p class="consent">Dengan mendaftar, Anda menyetujui datanya digunakan untuk keperluan daurah.</p>
+        </form>
+      </section>
+
+      <!-- ---------- Panel sukses ---------- -->
+      <section id="success-view" class="success" aria-labelledby="success-title" hidden>
+        <div class="success__icon" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></div>
+        <h2 class="success__title" id="success-title" tabindex="-1">Alhamdulillah, pendaftaran berhasil!</h2>
+
+        <div class="regno">
+          <p class="regno__label">No. Registrasi</p>
+          <p class="regno__value" id="s-regno"></p>
+          <button type="button" class="btn btn--secondary btn--sm" id="copy-btn">Salin</button>
+          <p class="visually-hidden" id="copy-status" role="status"></p>
         </div>
-      </div>
 
-      <!-- Bottom info bar -->
-      <div class="hero-info-bar">
-        <div class="hero-info-bar-inner">
-          <!-- Location Card -->
-          <div class="hero-info-card">
-            <div class="hero-info-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </div>
-            <div class="hero-info-card-content">
-              <strong>Masjid Ar Rahman, Surakarta</strong>
-              <a href="https://maps.app.goo.gl/8TjKBUTSAeDSV6gy6" target="_blank" rel="noopener noreferrer"
-                class="hero-info-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" aria-hidden="true">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                </svg>
-                Lihat di Google Maps
-              </a>
-            </div>
-          </div>
+        <dl class="summary">
+          <div class="summary__row"><dt>Nama</dt><dd id="s-name"></dd></div>
+          <div class="summary__row"><dt>Jenis Kelamin</dt><dd id="s-gender"></dd></div>
+          <div class="summary__row"><dt>Usia</dt><dd id="s-age"></dd></div>
+          <div class="summary__row"><dt>No. WhatsApp</dt><dd id="s-whatsapp"></dd></div>
+          <div class="summary__row"><dt>Domisili</dt><dd id="s-city"></dd></div>
+          <div class="summary__row"><dt>Metode Bayar</dt><dd id="s-method"></dd></div>
+          <div class="summary__row"><dt>Status Pembayaran</dt><dd><span class="status-badge" id="s-status"></span></dd></div>
+        </dl>
 
-          <div class="hero-info-separator" aria-hidden="true"></div>
-
-          <!-- Time Card -->
-          <div class="hero-info-card">
-            <div class="hero-info-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </div>
-            <div class="hero-info-card-content">
-              <span>Sabtu, 12 September 2026</span>
-              <span class="hero-info-time">10.00 s.d. Selesai</span>
-            </div>
-          </div>
+        <div class="reminder">
+          <h3 class="reminder__title">Pengingat</h3>
+          <ul class="reminder__list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span data-bind="dateFull"></span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span data-bind="time"></span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span data-bind="venueFull"></span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span data-bind="bringReminder"></span></li>
+          </ul>
         </div>
-      </div>
-    </header>
 
-    <!-- Content -->
-    <main class="container" id="main-content-p1">
-
-      <!-- Progress Indicator -->
-      <nav class="progress-indicator" aria-label="Tahapan pendaftaran">
-        <div class="progress-step active" id="step-daftar-p1">
-          <div class="progress-dot" aria-hidden="true"></div>
-          <span class="progress-label">Pendaftaran</span>
+        <div class="success__actions">
+          <a class="btn btn--primary" id="wa-btn" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
+            Hubungi Admin via WhatsApp
+          </a>
+          <button type="button" class="btn-link" id="again-btn">Daftarkan peserta lain</button>
         </div>
-        <div class="progress-line" id="progress-line-p1" aria-hidden="true"></div>
-        <div class="progress-step" id="step-selesai-p1">
-          <div class="progress-dot" aria-hidden="true"></div>
-          <span class="progress-label">Selesai</span>
-        </div>
-      </nav>
+      </section>
 
-      <!-- Info Card -->
-      <div class="info-card" role="note">
-        <p>Alhamdulillah, <strong>Muslim Solo</strong> kembali menyelenggarakan Daurah bersama <strong>Ustadz Abdullah
-            Taslim, M.A.</strong></p>
-        <p>Daurah ini terbuka untuk umum dan tidak dipungut biaya apapun. Kami berharap kaum muslimin dan muslimat dapat
-          meluangkan waktu untuk hadir, mengambil faedah, serta bersama-sama menambah ilmu dari kajian yang in sya Allah
-          penuh manfaat ini.</p>
-        <p>Silakan isi formulir pendaftaran di bawah ini. Semoga Allah ﷻ memberikan kemudahan kepada kita semua untuk
-          dapat hadir dan mengambil manfaat dari Daurah ini.</p>
-        <p style="text-align: justify; margin-bottom: 12px;">Apabila ada kendala, silakan hubungi panitia melalui tombol
-          di bawah ini:</p>
-        <div style="text-align: left;">
-          <a href="https://api.whatsapp.com/send?phone=6281935252800&text=Permisi%20admin%20saya%20mau%20bertanya"
-            target="_blank" rel="noopener noreferrer" class="btn-whatsapp"
-            style="display: inline-flex; width: auto; height: 40px; padding: 0 16px; font-size: 14px; border-radius: 8px;">
-            <!-- WhatsApp icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg>
-            Hubungi Panitia
+      <!-- ---------- Kuota penuh ---------- -->
+      <section id="quota-view" class="quota" aria-labelledby="quota-title" hidden>
+        <div class="quota__icon" aria-hidden="true"><svg class="icon"><use href="#i-users"/></svg></div>
+        <h2 class="quota__title" id="quota-title" tabindex="-1">Kuota Penuh</h2>
+        <p class="quota__text">Mohon maaf, kuota pendaftaran sudah penuh. Hubungi admin untuk daftar tunggu.</p>
+        <div class="quota__actions">
+          <a class="btn btn--primary" id="quota-wa-btn" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
+            Hubungi Admin via WhatsApp
           </a>
         </div>
-      </div>
-
-      <!-- Registration Form -->
-      <form id="registration-form" novalidate aria-label="Formulir Pendaftaran Daurah">
-
-        <div class="form-section-title">Data Peserta</div>
-
-        <!-- Nama Lengkap -->
-        <div class="form-group" id="group-nama">
-          <label for="nama">
-            Nama Lengkap <span class="required" aria-label="wajib">*</span>
-          </label>
-          <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" autocomplete="name"
-            aria-required="true" aria-describedby="error-nama">
-          <span class="error-text" id="error-nama" role="alert" aria-live="polite"></span>
-        </div>
-
-        <!-- Jenis Kelamin -->
-        <div class="form-group" id="group-gender">
-          <label id="label-gender">
-            Jenis Kelamin <span class="required" aria-label="wajib">*</span>
-          </label>
-          <div class="radio-group" role="radiogroup" aria-labelledby="label-gender" aria-describedby="error-gender">
-            <label class="radio-label" for="gender-laki">
-              <input type="radio" id="gender-laki" name="jenisKelamin" value="Laki-laki" aria-required="true">
-              <span class="radio-custom" aria-hidden="true"></span>
-              Laki-laki
-            </label>
-            <label class="radio-label" for="gender-perempuan">
-              <input type="radio" id="gender-perempuan" name="jenisKelamin" value="Perempuan" aria-required="true">
-              <span class="radio-custom" aria-hidden="true"></span>
-              Perempuan
-            </label>
-          </div>
-          <span class="error-text" id="error-gender" role="alert" aria-live="polite"></span>
-        </div>
-
-        <!-- Usia -->
-        <div class="form-group" id="group-usia">
-          <label for="usia">
-            Usia <span class="required" aria-label="wajib">*</span>
-          </label>
-          <input type="number" id="usia" name="usia" placeholder="Masukkan usia Anda" min="1" max="120"
-            inputmode="numeric" aria-required="true" aria-describedby="error-usia">
-          <span class="error-text" id="error-usia" role="alert" aria-live="polite"></span>
-        </div>
-
-        <!-- Nomor WhatsApp -->
-        <div class="form-group" id="group-whatsapp">
-          <label for="whatsapp">
-            Nomor WhatsApp <span class="required" aria-label="wajib">*</span>
-          </label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="Contoh: 08123456789" autocomplete="tel"
-            inputmode="tel" aria-required="true" aria-describedby="error-whatsapp">
-          <span class="error-text" id="error-whatsapp" role="alert" aria-live="polite"></span>
-        </div>
-
-        <!-- Domisili -->
-        <div class="form-group" id="group-domisili">
-          <label for="domisili">
-            Domisili <span class="required" aria-label="wajib">*</span>
-          </label>
-          <input type="text" id="domisili" name="domisili" placeholder="Kota/Kabupaten tempat tinggal"
-            autocomplete="address-level2" aria-required="true" aria-describedby="error-domisili">
-          <span class="error-text" id="error-domisili" role="alert" aria-live="polite"></span>
-        </div>
-
-
-
-        <!-- Submit Button -->
-        <button type="submit" id="btn-submit" class="btn-primary" aria-label="Lanjutkan pendaftaran">
-          <span class="btn-text">Lanjutkan →</span>
-          <span class="btn-loading hidden" aria-hidden="true">
-            <svg class="spinner" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-dasharray="28.27 28.27" />
-            </svg>
-            Menyimpan pendaftaran...
-          </span>
-        </button>
-
-        <!-- Global Error Alert -->
-        <div class="alert-error" id="alert-error" role="alert" aria-live="assertive"></div>
-
-      </form>
-
-    </main>
-
-    <!-- Footer -->
-    <footer role="contentinfo">
-      <p><strong>Muslim Solo</strong> · Masjid Ar Rahman, Surakarta</p>
-      <p>© 2026 Muslim Solo. Hak cipta dilindungi.</p>
-    </footer>
-
-  </div><!-- /page-1 -->
-
-
-  <!-- ======================================================
-       PAGE 2 — DONASI & SELESAI
-       ====================================================== -->
-  <div id="page-2" class="page hidden">
-
-    <!-- Hero (sama) -->
-    <header class="hero" role="banner">
-      <!-- Decorative light rays -->
-      <div class="hero-rays" aria-hidden="true"></div>
-
-      <!-- Corner ornaments -->
-      <div class="hero-ornament hero-ornament--tl" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 0h120v6H6v114H0V0z" fill="currentColor" opacity="0.5" />
-          <path d="M0 0h60v2H2v58H0V0z" fill="currentColor" />
-          <circle cx="16" cy="16" r="4" fill="currentColor" opacity="0.6" />
-          <path d="M30 2v18h-2V4H10V2h20z" fill="currentColor" opacity="0.4" />
-        </svg>
-      </div>
-      <div class="hero-ornament hero-ornament--tr" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M120 0H0v6h114v114h6V0z" fill="currentColor" opacity="0.5" />
-          <path d="M120 0H60v2h58v58h2V0z" fill="currentColor" />
-          <circle cx="104" cy="16" r="4" fill="currentColor" opacity="0.6" />
-          <path d="M90 2v18h2V4h18V2H90z" fill="currentColor" opacity="0.4" />
-        </svg>
-      </div>
-      <div class="hero-ornament hero-ornament--bl" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 120h120v-6H6V0H0v120z" fill="currentColor" opacity="0.5" />
-          <path d="M0 120h60v-2H2V60H0v60z" fill="currentColor" />
-          <circle cx="16" cy="104" r="4" fill="currentColor" opacity="0.6" />
-        </svg>
-      </div>
-      <div class="hero-ornament hero-ornament--br" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M120 120H0v-6h114V0h6v120z" fill="currentColor" opacity="0.5" />
-          <path d="M120 120H60v-2h58V60h2v60z" fill="currentColor" />
-          <circle cx="104" cy="104" r="4" fill="currentColor" opacity="0.6" />
-        </svg>
-      </div>
-
-      <!-- Islamic geometric pattern overlay -->
-      <div class="hero-pattern" aria-hidden="true"></div>
-
-      <!-- Content -->
-      <div class="hero-content">
-        <div class="hero-logos" aria-hidden="true">
-          <img src="img/logo-ms.png" alt="Muslim Solo" class="hero-logo">
-          <div class="hero-logo-divider"></div>
-          <img src="img/logo-arrahman.png" alt="Masjid Ar Rahman" class="hero-logo">
-        </div>
-
-        <!-- Premium badge -->
-        <div class="hero-label" aria-hidden="true">
-          <span class="hero-label-star" aria-hidden="true">✦</span>
-          <strong>Safr Ilmu</strong>
-          <span class="hero-label-star" aria-hidden="true">✦</span>
-        </div>
-
-        <!-- Geometric divider -->
-        <div class="hero-divider" aria-hidden="true">
-          <span class="hero-divider-line"></span>
-          <span class="hero-divider-diamond">◆</span>
-          <span class="hero-divider-line"></span>
-        </div>
-
-        <h2 class="hero-title">
-          <em>"Poligami: Bukti Keadilan</em><br>
-          <em>Hukum Allah"</em>
-        </h2>
-
-        <!-- Geometric divider -->
-        <div class="hero-divider" aria-hidden="true">
-          <span class="hero-divider-line"></span>
-          <span class="hero-divider-diamond">◆</span>
-          <span class="hero-divider-line"></span>
-        </div>
-
-        <!-- Ustadz name frame -->
-        <div class="hero-ustadz">
-          <span class="hero-ustadz-prefix">Bersama</span>
-          <div class="hero-ustadz-name">
-            <span class="hero-ustadz-accent" aria-hidden="true">✦</span>
-            Ustadz Abdullah Taslim, M.A.
-            <span class="hero-ustadz-accent" aria-hidden="true">✦</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom info bar -->
-      <div class="hero-info-bar">
-        <div class="hero-info-bar-inner">
-          <!-- Location Card -->
-          <div class="hero-info-card">
-            <div class="hero-info-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-            </div>
-            <div class="hero-info-card-content">
-              <strong>Masjid Ar Rahman, Surakarta</strong>
-              <a href="https://maps.app.goo.gl/8TjKBUTSAeDSV6gy6" target="_blank" rel="noopener noreferrer"
-                class="hero-info-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" aria-hidden="true">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                </svg>
-                Lihat di Google Maps
-              </a>
-            </div>
-          </div>
-
-          <div class="hero-info-separator" aria-hidden="true"></div>
-
-          <!-- Time Card -->
-          <div class="hero-info-card">
-            <div class="hero-info-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-            </div>
-            <div class="hero-info-card-content">
-              <span>Sabtu, 12 September 2026</span>
-              <span class="hero-info-time">10.00 s.d. Selesai</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Content -->
-    <main class="container" id="main-content-p2">
-
-      <!-- Progress Indicator (selesai) -->
-      <nav class="progress-indicator" aria-label="Tahapan pendaftaran">
-        <div class="progress-step done" id="step-daftar-p2">
-          <div class="progress-dot" aria-hidden="true"></div>
-          <span class="progress-label">Pendaftaran</span>
-        </div>
-        <div class="progress-line" id="progress-line-p2" aria-hidden="true"></div>
-        <div class="progress-step active" id="step-selesai-p2">
-          <div class="progress-dot" aria-hidden="true"></div>
-          <span class="progress-label">Selesai</span>
-        </div>
-      </nav>
-
-      <!-- Success Card -->
-      <section class="success-card" aria-live="polite" aria-label="Status pendaftaran">
-        <div class="success-icon-wrap" aria-hidden="true">
-          <span class="success-icon success-icon--white">✓</span>
-        </div>
-        <h2>🎉 Pendaftaran Berhasil!</h2>
-        <p>Data pendaftaran Anda telah berhasil diterima oleh panitia. Kami menantikan kehadiran Anda!</p>
-        <div class="reg-id-box" aria-label="ID Pendaftaran Anda">
-          <span class="reg-id-label">ID Pendaftaran</span>
-          <span class="reg-id-value" id="reg-id-display">DRS-0001</span>
-        </div>
       </section>
+    </div>
+  </main>
 
-      <!-- Donation Section -->
-      <section class="donation-card" aria-label="Informasi donasi sukarela">
-        <div class="donation-icon" aria-hidden="true">💚</div>
-        <h2>Dukung Kegiatan Daurah</h2>
-        <p>
-          Alhamdulillah, kegiatan ini terbuka untuk umum dan <strong>tidak dipungut biaya apapun</strong>.
-          Namun jika Anda ingin turut mendukung keberlangsungan kegiatan dakwah ini,
-          donasi Anda sangat berarti bagi kami.
-        </p>
-        <span class="donation-note">✓ Donasi bersifat sukarela<br>bukan syarat pendaftaran</span>
-
-        <!-- QRIS -->
-        <div class="qris-container">
-          <img src="img/qris-ms.png" alt="Kode QRIS untuk donasi kepada Muslim Solo" class="qris-image">
-        </div>
-        <a href="img/qris-ms.png" download="QRIS-MuslimSolo.png" id="btn-download-qris" class="btn-download-qris"
-          aria-label="Download gambar QRIS Muslim Solo">
-          Download QRIS
-        </a>
-
-        <!-- Rekening -->
-        <div class="rekening-card">
-          <div class="rekening-bank">Rekening Bank BNI:</div>
-          <div class="rekening-number" aria-label="Nomor rekening BNI">5808919191</div>
-          <div class="rekening-name">a.n. Muslim Solo</div>
-          <button type="button" id="btn-copy" class="btn-copy" aria-label="Salin nomor rekening BNI Muslim Solo">
-            <span id="btn-copy-text">Salin Nomor Rekening</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- WhatsApp Section -->
-      <section class="whatsapp-section" aria-label="Menghubungi panitia">
-        <p>
-          Apabila membutuhkan informasi lebih lanjut, dapat menghubungi panitia dengan link berikut.
-        </p>
-        <a href="https://api.whatsapp.com/send?phone=6281935252800&text=Permisi%20admin%20saya%20mau%20bertanya"
-          target="_blank" rel="noopener noreferrer" id="btn-whatsapp" class="btn-whatsapp"
-          aria-label="Hubungi panitia via WhatsApp">
-          <!-- WhatsApp icon -->
-          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-          </svg>
-          Hubungi Panitia
-        </a>
-      </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer role="contentinfo">
-      <p><strong>Muslim Solo</strong> · Masjid Ar Rahman, Surakarta</p>
-      <p>© 2026 Muslim Solo. Hak cipta dilindungi.</p>
-    </footer>
-
-  </div><!-- /page-2 -->
-
-  <script src="app.js"></script>
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__block">
+      <p class="footer__lead">Ada pertanyaan seputar daurah?</p>
+      <a class="btn btn--secondary footer__wa" id="footer-wa" target="_blank" rel="noopener">
+        <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
+        Chat Admin<span class="visually-hidden"> via WhatsApp (membuka tab baru)</span>
+      </a>
+    </div>
+    <div class="footer__block">
+      <p class="footer__lead">Ingin ikut andil dalam dakwah?<br>Klik link di bawah ini:</p>
+      <p><a id="donation-link" target="_blank" rel="noopener">donasi.muslimsolo.id</a></p>
+    </div>
+    <p><a href="https://muslimsolo.id" target="_blank" rel="noopener">muslimsolo.id</a></p>
+  </footer>
 </body>
-
 </html>
