@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Daurah "Tajidul Iman" - Muslim Solo
+   Daurah "Tajdidul Iman" - Muslim Solo
    Frontend vanilla JS (tanpa framework / build step).
    Validasi di sini hanya untuk UX; server (Apps Script) adalah otoritas akhir.
    ========================================================================== */
@@ -12,7 +12,7 @@ const CONFIG = {
   API_URL: "https://script.google.com/macros/s/AKfycby72vRg1AY0vxzNrQt-uDii4w0O4aUaSaWkP6egeQAL3qvTqjOoNDuIJsKRtoeLWmsurg/exec",                      // ⚠️ URL Web App Apps Script (…/exec)
   EVENT: {
     SERIES: "Daurah Safr Ilmu (Ikhwan & Akhwat)",
-    TITLE: "Tajidul Iman",
+    TITLE: "Tajdidul Iman",
     SPEAKER: "Ustadz Afifi Abdul Wadud, B.A",
     DATE_LABEL: "Ahad, 25 Oktober 2026",   // dikonfirmasi pemilik (prd.md OQ-1)
     HIJRI_LABEL: "14 Jumadil Awal 1448",
